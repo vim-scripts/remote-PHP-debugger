@@ -1,0 +1,60 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=1152
+
+This python script provide debugger interface to DBGp protocol.
+( but, only tested on Xdebug2.0 - http://www.xdebug.org/ )
+
+screen shot:  http://segv74.homeip.net:7000/debugger.gif 
+
+Requirements)
+- DBGp protocol enabled debugging module. such as xdebug.
+  ( I don't know there are free DBGp debugger except xdebug )
+-  vim 6.3 ( only tested on vim 6.3 ) with !!!!!!!!!!!!
+- python 2.3+ interface , +sign feature  !!!!!!!!!!!!
+  ( < python 2.2 don't have socket timeout. sorry for my lasiness. )
+- this vim script. ( debugger.vim / debugger.py )
+
+Usage)
+1. setup xdebug 2.0 correctly. or other DBGp enabled server.
+   ( with proper remote debug option )
+
+2. press <F5> and browse php file within 5 seconds. :-)
+    If you did setup correctly, server will make connection to vim.
+    [ you can change port by editing last line of debugger.vim ]
+
+    all the windows currently opened will be closed and debugger interface will be shown.
+
+3. in debuggin mode
+<F1> : resizing windows
+<F2> : step into
+<F3> : step over
+<F4> : step out
+
+<F6> : stop debugging
+
+<F11> : shows all variables
+<F12> : shows variable on current cursor 
+
+,e : evalute expression and display result. cursor is automatically move to watch window. type line and just press enter.
+
+command line command)
+:Bp    : toggle breakpoint on current line
+:Up    : goto upper level of stack
+:Dn    : goto lower level of stack
+
+4. press <F6> to stop debugging.
+    then, debugger windows will be closed and windows will be restored.
+    ( holy :mksession feature )
+
+5. notes
+-  you will see python's exception message. almost of them occurred when connection is closed. xdebug dosen't send message for last file/line information.
+just press <F6> to restore sesson. sometimes are xdebug's bug.
+- to use with a lot of people with same time, it may needs DBGp proxy. you may download MIT licensed(?) version of it from activestate's komodo's evalution copy. and, you have to change this script a little.
+- it doesn't all features of DBGp. very essential part of it.
+
+*** there will be no future release plan of this script.***
+currently I'm working on PHP interface on vim, and I will use my php version of this debugger. maybe someday you can see it. so, I really appriciate if someone upgrade this script.
+
+VERY IMPORTANT TIP)
+If you turn off syntax highlighting, It will increase speed very much !!!!!!
+:syn off (but, not pretty)
+
